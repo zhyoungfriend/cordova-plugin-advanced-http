@@ -52,9 +52,9 @@ static BOOL AFErrorOrUnderlyingErrorHasCodeInDomain(NSError *error, NSInteger co
     nsEncoding = CFStringConvertEncodingToNSStringEncoding(cfEncoding);
   }
 
-  NSStringEncoding supportedEncodings[6] = {
+  NSStringEncoding supportedEncodings[7] = {
     NSUTF8StringEncoding, NSWindowsCP1252StringEncoding, NSISOLatin1StringEncoding,
-    NSISOLatin2StringEncoding, NSASCIIStringEncoding, NSUnicodeStringEncoding
+    NSISOLatin2StringEncoding, NSASCIIStringEncoding, NSUnicodeStringEncoding, CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000)
   };
 
   for (int i = 0; i < sizeof(supportedEncodings) / sizeof(NSStringEncoding) && !decoded; ++i) {
@@ -70,7 +70,12 @@ static BOOL AFErrorOrUnderlyingErrorHasCodeInDomain(NSError *error, NSInteger co
   CFStringEncoding encoding = kCFStringEncodingInvalidId;
 
   if (response.textEncodingName) {
-    encoding = CFStringConvertIANACharSetNameToEncoding((CFStringRef)response.textEncodingName);
+      if([response.textEncodingName isEqualToString:@"gbk"]) {
+          encoding = CFStringConvertIANACharSetNameToEncoding((CFStringRef)@"gb18030");
+      } else {
+          encoding = CFStringConvertIANACharSetNameToEncoding((CFStringRef)response.textEncodingName);
+      }
+
   }
 
   return encoding;
