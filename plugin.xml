@@ -75,10 +75,11 @@
     <source-file src="src/android/com/silkimen/http/HttpRequest.java" target-dir="src/com/silkimen/http"/>
     <source-file src="src/android/com/silkimen/http/JsonUtils.java" target-dir="src/com/silkimen/http"/>
     <source-file src="src/android/com/silkimen/http/KeyChainKeyManager.java" target-dir="src/com/silkimen/http"/>
+    <source-file src="src/android/com/silkimen/http/ObsoleteUrlFactory.java" target-dir="src/com/silkimen/http"/>
     <source-file src="src/android/com/silkimen/http/OkConnectionFactory.java" target-dir="src/com/silkimen/http"/>
     <source-file src="src/android/com/silkimen/http/TLSConfiguration.java" target-dir="src/com/silkimen/http"/>
     <source-file src="src/android/com/silkimen/http/TLSSocketFactory.java" target-dir="src/com/silkimen/http"/>
-    <preference name="OKHTTP_VERSION" default="3.13.1"/>
+    <preference name="OKHTTP_VERSION" default="3.14.9"/>
     <framework src="com.squareup.okhttp3:okhttp-urlconnection:$OKHTTP_VERSION"/>
   </platform>
   <platform name="browser">
